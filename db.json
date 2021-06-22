@@ -1,0 +1,41 @@
+{
+  "Users": [
+    {
+      "id": "4",
+      "name": "Ayoub Zoubiri",
+      "email": "AZOUBIRI@gmail.com",
+      "city": "CasablancA",
+      "active": true
+    },
+    {
+      "id": 8234,
+      "name": "abdessabour bourass",
+      "email": "Choaibmoncef1@gmail.com",
+      "active": false
+    },
+    {
+      "id": 74853,
+      "name": "moncef atlassy",
+      "email": "moncef",
+      "active": true
+    },
+    {
+      "id": 45832,
+      "name": "Karim baggari",
+      "email": "karimbg@gmail.com",
+      "active": true
+    },
+    {
+      "id": 39025,
+      "name": "jhg",
+      "email": "uhy",
+      "active": true
+    },
+    {
+      "id": 76687,
+      "name": "sif eddine rkhis",
+      "email": "SIFF",
+      "active": true
+    }
+  ]
+}
