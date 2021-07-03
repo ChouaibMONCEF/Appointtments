@@ -1,6 +1,10 @@
 <template>
     <header>
         <h1>{{title}}</h1>
+        <router-link to="/about">About</router-link> &nbsp;
+        <router-link to="/Login">Login</router-link> &nbsp;
+        <router-link to="/">Appointements</router-link> &nbsp;
+        <router-link to="/Register">Register</router-link>
         <Button v-show="homePage" @btn-click="$emit('toggle-add-User')" 
         :text="showAddUser ? 'Close' : 'Add User' " 
         :color="showAddUser ? 'red' : 'green' " 
