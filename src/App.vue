@@ -2,7 +2,7 @@
   <div class="container">
     <Header
       @toggle-add-User="toggleAddUser"
-      title="User Tracker"
+      title="Appointements"
       :showAddUser="showAddUser"
     />
     

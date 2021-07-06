@@ -1,16 +1,16 @@
 <template>
   <form @submit="onSubmit" class="add-form">
     <div class="form-control">
-      <label>Date</label>
-      <input type="date" v-model="date" name="date" placeholder="" />
+      <label>FirstName</label>
+      <input type="text" v-model="FirstName" name="FirstName" placeholder="" />
     </div>
     <div class="form-control">
-      <label>Subject</label>
-      <input type="text" v-model="subject" name="subject" placeholder="" />
+      <label>LastName</label>
+      <input type="text" v-model="LastName" name="LastName" placeholder="" />
     </div>
-    <div class="form-control form-control-check">
-      <label>Active Reminder</label>
-      <input type="checkbox" v-model="reminder" name="reminder" />
+    <div class="form-control">
+      <label>email</label>
+      <input type="text" v-model="email" name="email" />
     </div>
 
     <input type="submit" value="Save User" class="btn btn-block" />
@@ -19,31 +19,31 @@
 
 <script>
   export default {
-    name: "Add User",
+    name: "Register",
     data() {
       return {
-        date: "",
-        subject: "",
-        reminder: false,
+        FirstName: "",
+        LastName: "",
+        email: "",
       };
     },
     methods: {
       onSubmit(e) {
         e.preventDefault();
-        if (!this.date) {
+        if (!this.FirstName) {
           alert("please add a User");
           return;
         }
         const newUser = {
           id: Math.floor(Math.random() * 100000),
-          date: this.date,
-          subject: this.subject,
-          reminder: this.reminder,
+          FirstName: this.FirstName,
+          LastName: this.LastName,
+          email: this.email,
         };
         this.$emit("add-User", newUser);
-        this.date = "";
-        this.subject = "";
-        this.reminder = false;
+        this.FirstName = "";
+        this.LastName = "";
+        this.email = "";
       },
     },
   };

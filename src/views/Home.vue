@@ -3,29 +3,33 @@
     <AddUser @add-User="addUser" />
   </div>
   <!-- CUSTOM EVENT LISTENER -->
-  <Users @toggle="toggleActive" @delete-User="deleteUser" :Users="Users" />
+  <Appointments
+    @toggle="toggleActive"
+    @delete-User="deleteUser"
+    :App="Appointment"
+  />
 </template>
 
 <script>
-  import Users from "../components/Users";
+  import Appointments from "../components/Appointments";
   import AddUser from "../components/AddUser";
   export default {
     name: "Home",
     props: {
-        showAddUser: Boolean,
+      showAddUser: Boolean,
     },
     components: {
-      Users,
+      Appointments,
       AddUser,
     },
     data() {
       return {
-        Users: [],
+        Appointment: [],
       };
     },
     methods: {
       async addUser(user) {
-        const res = await fetch("api/Users", {
+        const res = await fetch("api/Appointement/createAppointement", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -35,16 +39,18 @@
 
         const data = await res.json();
 
-        this.Users = [...this.Users, data];
+        this.Appointments = [...this.Appointments, data];
       },
       async deleteUser(id) {
         if (confirm("are you sure?")) {
-          const res = await fetch(`api/Users/${id}`, {
+          const res = await fetch(`api/Appointments/${id}`, {
             method: "DELETE",
           });
 
           res.status === 200
-            ? (this.Users = this.Users.filter((User) => User.id !== id))
+            ? (this.Appointments = this.Appointments.filter(
+                (User) => User.id !== id
+              ))
             : alert("error deleting user");
         }
       },
@@ -52,7 +58,7 @@
         const usertoggle = await this.fetchUser(id);
         const updateuser = { ...usertoggle, active: !usertoggle.active };
 
-        const res = await fetch(`api/Users/${id}`, {
+        const res = await fetch(`api/Appointments/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -62,29 +68,28 @@
 
         const data = await res.json();
 
-        this.Users = this.Users.map((User) =>
+        this.Appointments = this.Appointments.map((User) =>
           User.id === id ? { ...User, active: data.active } : User
         );
       },
-      async fetchUsers() {
-        const res = await fetch("api/Users");
+      async fetchAppointments() {
+        const res = await fetch("api/Appointement/getUserAppointement/2");
 
         const data = await res.json();
+        console.log(data);
         return data;
-        
       },
       async fetchUser(id) {
-        const res = await fetch(`api/Users/${id}`);
+        const res = await fetch(`api/Appointments/${id}`);
 
         const data = await res.json();
-
+        console.log(data);
         return data;
       },
     },
-    
+
     async created() {
-     
-      this.Users = await this.fetchUsers();
+      this.Appointment = await this.fetchAppointments();
     },
   };
 </script>
