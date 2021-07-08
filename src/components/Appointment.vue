@@ -5,13 +5,13 @@
     :class="[allo.reminder ? 'active' : '', 'User']"
   >
     <div class="inner">
-      <h2>{{ allo.date }}</h2>
+      <h2>{{ allo.subject }}
         <button
-          @click="$emit('delete-User', allo.id)"
+          @click="$emit('deleteAppointment', allo.id)"
           class="fas fa-times"
         ></button>
-      
-      <h3>{{ allo.subject }}</h3>
+      </h2>
+      <h3>{{ allo.date }}</h3>
     </div>
   </div>
 </template>
@@ -23,7 +23,6 @@
       allo: Object,
     },
   };
-  console.log();
 </script>
 
 <style scoped>
@@ -47,7 +46,7 @@
   .task {
     background: #f4f4f4;
     margin: 5px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     cursor: pointer;
   }
   .task.active {

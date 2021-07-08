@@ -1,8 +1,4 @@
 <template>
-    <div>
-      <Register @add-User="addUser" />
-    </div>
-
 <!-- 
 
   <form @submit="onSubmit" class="add-form">
@@ -59,6 +55,11 @@
       <br>
       <Button  />
     </form> -->
+
+    <div>
+      <Register @add-User="addUser" />
+    </div>
+
 
 </template>
 

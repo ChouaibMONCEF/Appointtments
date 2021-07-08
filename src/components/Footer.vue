@@ -1,5 +1,6 @@
 <template>
     <footer>
+        <router-link to="/about">About</router-link> &nbsp;
         <p>YouCode &copy; 2021</p>
     </footer>
 </template>

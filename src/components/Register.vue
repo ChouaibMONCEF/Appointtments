@@ -3,14 +3,14 @@
     <div class="form-control">
       <label>FirstName</label>
       <input type="text" v-model="FirstName" name="FirstName" placeholder="" />
-    </div>
-    <div class="form-control">
+   
       <label>LastName</label>
       <input type="text" v-model="LastName" name="LastName" placeholder="" />
-    </div>
-    <div class="form-control">
+    
       <label>email</label>
-      <input type="text" v-model="email" name="email" />
+      <input type="text" v-model="email" name="email" />   
+      
+      <input type="text" hidden v-model="uref" name="uref" />
     </div>
 
     <input type="submit" value="Save User" class="btn btn-block" />
@@ -25,25 +25,39 @@
         FirstName: "",
         LastName: "",
         email: "",
+        uref: "",
       };
     },
     methods: {
       onSubmit(e) {
+        
         e.preventDefault();
         if (!this.FirstName) {
           alert("please add a User");
           return;
         }
+        function generateUref(length) {
+		const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = ' ';
+        const charactersLength = characters.length;
+        for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+        }
+        let ref = generateUref(10);
         const newUser = {
           id: Math.floor(Math.random() * 100000),
           FirstName: this.FirstName,
           LastName: this.LastName,
-          email: this.email,
+          email: ref,
+          uref: generateUref(10),
         };
         this.$emit("add-User", newUser);
         this.FirstName = "";
         this.LastName = "";
         this.email = "";
+        this.uref = "";
       },
     },
   };

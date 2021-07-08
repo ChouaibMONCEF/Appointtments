@@ -5,7 +5,7 @@
   <!-- CUSTOM EVENT LISTENER -->
   <Appointments
     @toggle="toggleActive"
-    @delete-User="deleteUser"
+    @deleteAppointment="deleteAppointment"
     :App="Appointment"
   />
 </template>
@@ -41,15 +41,16 @@
 
         this.Appointments = [...this.Appointments, data];
       },
-      async deleteUser(id) {
+      async deleteAppointment(id) {
+        console.log("tereiezd")
         if (confirm("are you sure?")) {
-          const res = await fetch(`api/Appointments/${id}`, {
+          const res = await fetch(`api/Appointement/deleteAppointement/${id}`, {
             method: "DELETE",
           });
 
           res.status === 200
             ? (this.Appointments = this.Appointments.filter(
-                (User) => User.id !== id
+                (Appointment) => Appointment.id !== id
               ))
             : alert("error deleting user");
         }
@@ -87,7 +88,6 @@
         return data;
       },
     },
-
     async created() {
       this.Appointment = await this.fetchAppointments();
     },

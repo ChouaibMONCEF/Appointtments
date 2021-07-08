@@ -1,8 +1,10 @@
 <template>
   <!-- {{ App }} -->
+  <div v-if="1==1" >
   <div v-for="allo in App.appointment" :key="allo.id">
     <!-- {{ allo }} -->
-    <Appointment :allo="allo" />
+    <Appointment @deleteAppointment="$emit('deleteAppointment', allo.id)" :allo="allo" />
+  </div>
   </div>
 </template>
 
@@ -16,6 +18,6 @@
     components: {
       Appointment,
     },
-    emits: ["delete-Appointment", "toggle"],
+    emits: ["deleteAppointment", "toggle"],
   };
 </script>
