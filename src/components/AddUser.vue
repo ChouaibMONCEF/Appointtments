@@ -12,6 +12,8 @@
       <label>Active Reminder</label>
       <input type="checkbox" v-model="reminder" name="reminder" />
     </div>
+    
+      <input type="text" hidden v-model="rref" name="rref" />
 
     <input type="submit" value="Save User" class="btn btn-block" />
   </form>
@@ -25,6 +27,7 @@
         date: "",
         subject: "",
         reminder: false,
+        rref: localStorage.getItem("uref"),
       };
     },
     methods: {
@@ -39,11 +42,13 @@
           date: this.date,
           subject: this.subject,
           reminder: this.reminder,
+          rref: localStorage.getItem("uref"),
         };
         this.$emit("add-User", newUser);
         this.date = "";
         this.subject = "";
         this.reminder = false;
+        this.rref = "";
       },
     },
   };

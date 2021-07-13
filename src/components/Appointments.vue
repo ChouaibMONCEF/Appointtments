@@ -1,9 +1,10 @@
 <template>
   <!-- {{ App }} -->
   <div v-if="1==1" >
-  <div v-for="allo in App.appointment" :key="allo.id">
-    <!-- {{ allo }} -->
-    <Appointment @deleteAppointment="$emit('deleteAppointment', allo.id)" :allo="allo" />
+  <div v-for="aptmnt in App.appointment" :key="aptmnt.id">
+    <!-- {{ aptmnt }} -->
+    <Appointment @deleteAppointment="$emit('deleteAppointment', aptmnt.id)" :aptmnt="aptmnt" />
+    
   </div>
   </div>
 </template>

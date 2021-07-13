@@ -38,19 +38,19 @@
         }
         function generateUref(length) {
 		const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = ' ';
+        let result = '';
         const charactersLength = characters.length;
         for ( let i = 0; i < length; i++ ) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         return result;
         }
-        let ref = generateUref(10);
+        
         const newUser = {
           id: Math.floor(Math.random() * 100000),
           FirstName: this.FirstName,
           LastName: this.LastName,
-          email: ref,
+          email: this.email,
           uref: generateUref(10),
         };
         this.$emit("add-User", newUser);

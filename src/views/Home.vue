@@ -28,13 +28,13 @@
       };
     },
     methods: {
-      async addUser(user) {
+      async addUser(aptmnt) {
         const res = await fetch("api/Appointement/createAppointement", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify(user),
+          body: JSON.stringify(aptmnt),
         });
 
         const data = await res.json();
@@ -74,13 +74,16 @@
         );
       },
       async fetchAppointments() {
-        const res = await fetch("api/Appointement/getUserAppointement/2");
+        let id = localStorage.getItem("uref")
+        console.log(id)
+        const res = await fetch(`api/Appointement/getUserAppointement/${id}`);
 
         const data = await res.json();
         console.log(data);
         return data;
       },
       async fetchUser(id) {
+        
         const res = await fetch(`api/Appointments/${id}`);
 
         const data = await res.json();

@@ -2,7 +2,7 @@
   <div class="container">
     <Header
       @toggle-add-User="toggleAddUser"
-      title="Appointements"
+      :title= "title"
       :showAddUser="showAddUser"
     />
     
@@ -26,6 +26,7 @@
     data() {
       return {
         showAddUser: false,
+        title: localStorage.getItem("uref")
       };
     },
     methods: {

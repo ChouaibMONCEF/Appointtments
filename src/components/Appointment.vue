@@ -1,17 +1,17 @@
 <template>
   <div
     class="card"
-    @dblclick="$emit('toggle-active', allo.id)"
-    :class="[allo.reminder ? 'active' : '', 'User']"
+    @dblclick="$emit('toggle-active', aptmnt.id)"
+    :class="[aptmnt.reminder ? 'active' : '', 'User']"
   >
     <div class="inner">
-      <h2>{{ allo.subject }}
+      <h2>{{ aptmnt.subject }}
         <button
-          @click="$emit('deleteAppointment', allo.id)"
+          @click="$emit('deleteAppointment', aptmnt.id)"
           class="fas fa-times"
         ></button>
       </h2>
-      <h3>{{ allo.date }}</h3>
+      <h3>{{ aptmnt.date }}</h3>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@
   export default {
     name: "Appointment",
     props: {
-      allo: Object,
+      aptmnt: Object,
     },
   };
 </script>

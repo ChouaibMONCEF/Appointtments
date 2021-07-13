@@ -3,6 +3,7 @@
     <div class="form-control">
       
       <label>Reference</label>
+  
       <input type="text" v-model="uref" name="uref" placeholder="Your Reference" />
     
     <input type="submit" value="Save User" class="btn btn-block" />
@@ -13,12 +14,20 @@
 <script>
   export default {
     name: "Login",
+    // props: {
+    //   Ldata: Array,
+    // },
     data() {
       return {
         uref: "",
       };
     },
     methods: {
+      // redirect() {
+        
+      //     this.$router.push('/');
+        
+      // },
       onSubmit(e) {
         
         e.preventDefault();
